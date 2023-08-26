@@ -18,15 +18,8 @@ pipeline {
                     dockerImage = docker.build("${imageName}:${imageTag}", "-f Dockerfile .")
 
                     def registryURL = 'https://registry.arsalanses.ir'
-                    def registryCredentials = [
-                        usernamePassword(
-                            credentialsId: '',
-                            usernameVariable: 'REGISTRY_USERNAME',
-                            passwordVariable: 'REGISTRY_PASSWORD'
-                        )
-                    ]
                     
-                    docker.withRegistry(registryURL, registryCredentials) {
+                    docker.withRegistry(registryURL) {
                         dockerImage.push()
                     }
                 }
