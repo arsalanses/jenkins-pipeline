@@ -1,0 +1,17 @@
+pipelineJob('backend-production-pipline') {
+  definition {
+    cpsScm {
+      scm {
+        git {
+          remote {
+            url('https://github.com/arsalanses/jenkins-pipeline')
+            credentials('github-manifests')
+          }
+          branch('*/main')
+        }
+      }
+      scriptPath('backend/Jenkinsfile')
+      lightweight()
+    }
+  }
+}

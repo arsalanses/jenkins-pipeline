@@ -11,13 +11,13 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    def imageName = "registry.arsalanses.ir/hashicorp/http-echo"
+                    def imageName = "registry.arsalanse.ir/hashicorp/http-echo"
                     def imageTag = "latest"
                     def dockerImage
 
-                    dockerImage = docker.build("${imageName}:${imageTag}", "-f Dockerfile .")
+                    dockerImage = docker.build("${imageName}:${imageTag}", "-f backend/Dockerfile ./backend")
 
-                    def registryURL = 'https://registry.arsalanses.ir'
+                    def registryURL = 'https://registry.arsalanse.ir'
                     
                     docker.withRegistry(registryURL) {
                         dockerImage.push()
