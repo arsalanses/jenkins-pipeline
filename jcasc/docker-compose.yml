@@ -1,0 +1,15 @@
+services:
+  jenkins:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - jenkins_data:/var/jenkins_home
+    environment:
+      - CASC_JENKINS_CONFIG=/var/jenkins_home/casc_configs/jenkins.yaml
+
+volumes:
+  jenkins_data:
+
+# docker build -t my-jenkins-casc .
+# docker run -d -p 8080:8080 my-jenkins-casc

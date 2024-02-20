@@ -1,0 +1,20 @@
+jenkins:
+  systemMessage: "Jenkins configured automatically by Jenkins Configuration as Code plugin\n\n"
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+       - id: "admin"
+         password: "admin"
+
+unclassified:
+  location:
+    url: http://localhost:8080/
+
+jobs:
+  my-job:
+    type: freestyle
+    name: My Job
+    steps:
+      - shell: echo "Hello, world!"
